@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="open_weather_app_id" translatable="false">d3783d35cd85c8185743026665074d77</string>
+    
+    <!--region Exceptions-->
+    <string name="no_internet_connection_exception">No internet connection</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="no_data">No data</string>
+    <!--endregion-->
+
+    <!--region Alert Dialog-->
+    <string name="alert_button_ok">OK</string>
+    <string name="alert_title_error">Alert</string>
+    <!--endregion-->
+
+    <string name="permissions_rationale_title">Location permission</string>
+    <string name="permissions_rationale_message">The App needs access to your location in order to provide proper weather data</string>
+    <string name="settings">Settings</string>
+    <string name="retry">Retry</string>
+
+    <string name="degree_value">%1$s&#176;C</string>
+    <string name="feels_like_value">Ощущается как %1$s&#176;C</string>
+    <string name="tomsk_city">Томск</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</string>
+
+</resources>

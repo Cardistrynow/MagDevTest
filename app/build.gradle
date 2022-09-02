@@ -1,0 +1,134 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion '29.0.3'
+
+    defaultConfig {
+        applicationId "com.magdev"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        setArchivesBaseName("MagDev-$versionName($versionCode)")
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("magdevtest_keystore.jks")
+            storePassword "NyaRv5TLkE"
+            keyAlias "MagDevTest"
+            keyPassword "NyaRv5TLkE"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            dimension "version"
+            applicationId "com.magdev.test"
+            buildConfigField "String", "API_URL", '"https://api.openweathermap.org/"'
+            resValue "string", "app_name", "MagDev Test"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+ext {
+    rxjavaVersion = '2.2.19'
+    rxkotlinVersion = '2.4.0'
+    rxandroidVersion = '2.1.1'
+    rxrelayVersion = '2.1.1'
+
+    daggerVersion = '2.35.1'
+    moxyVersion = '2.2.2'
+    ciceroneVersion = '7.1'
+
+    okhttpVersion = '4.9.0'
+    retrofitVersion = '2.9.0'
+    gsonVersion = '2.8.6'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android Support
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Kotlin
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Dependency Injection
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+
+    // RxJava + RxKotlin
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlinVersion"
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rxrelayVersion"
+
+    // Network
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // MVP
+    implementation "com.github.moxy-community:moxy:$moxyVersion"
+    kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-android:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
+
+    // Navigation
+    implementation "com.github.terrakok:cicerone:$ciceroneVersion"
+
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation ('com.github.bumptech.glide:okhttp3-integration:4.11.0')
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // Google Play Services
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+}

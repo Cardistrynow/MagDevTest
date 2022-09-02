@@ -1,1 +1,1 @@
-# MagDevTest
+magdevtest_android
