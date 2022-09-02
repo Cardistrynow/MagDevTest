@@ -18,6 +18,8 @@
     <string name="settings">Settings</string>
     <string name="retry">Retry</string>
 
+    <string name="default_location">Томск</string>
+    <string name="your_location">Ваше местоположение</string>
     <string name="degree_value">%1$s&#176;C</string>
     <string name="feels_like_value">Ощущается как %1$s&#176;C</string>
     <string name="tomsk_city">Томск</string>

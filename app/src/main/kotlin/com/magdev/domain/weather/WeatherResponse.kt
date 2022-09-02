@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class WeatherResponse(
+    @SerializedName("name")
+    val name: String?,
     @SerializedName("current")
     val current: Current?,
     @SerializedName("daily")

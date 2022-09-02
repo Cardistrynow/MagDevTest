@@ -3,6 +3,7 @@ package com.magdev.presentation.common
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import com.magdev.infrastructure.extensions.toast
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -12,7 +13,7 @@ import com.magdev.R
 import moxy.MvpAppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseActivity : MvpAppCompatActivity(), IBaseView, HasAndroidInjector {
+abstract class BaseActivity(@LayoutRes layoutId: Int) : MvpAppCompatActivity(layoutId), IBaseView, HasAndroidInjector {
 
     @Inject protected lateinit var androidInjector: DispatchingAndroidInjector<Any>
 

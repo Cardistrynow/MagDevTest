@@ -16,10 +16,10 @@ class HomeInteractor @Inject constructor(
     private val context: Context,
     private val weatherApi: IWeatherApi) {
 
-    fun getWeather(): Single<WeatherResponse> {
+    fun getWeather(location: Location?): Single<WeatherResponse> {
         return weatherApi.getWeather(
-            lat = 56.5,
-            lon = 84.9667,
+            lat = location?.latitude ?: 56.5,
+            lon = location?.longitude ?: 84.9667,
             appid = context.getString(R.string.open_weather_app_id)
         ).compose(rxScheduler.getSingleTransformer())
     }

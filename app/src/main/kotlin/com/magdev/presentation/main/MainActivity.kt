@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.magdev.R
 import com.magdev.databinding.ActivityMainBinding
 import com.magdev.infrastructure.extensions.intentFor
 import com.magdev.infrastructure.extensions.longToast
@@ -12,7 +13,7 @@ import com.magdev.presentation.common.viper.AbstractViperActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
-class MainActivity : AbstractViperActivity<MainPresenter, MainNavigator>(),
+class MainActivity : AbstractViperActivity<MainPresenter, MainNavigator>(R.layout.activity_main),
                      IMainView {
 
     private lateinit var binding: ActivityMainBinding
